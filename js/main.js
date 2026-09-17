@@ -241,6 +241,45 @@
     gsap.set('.reveal, .reveal-img, .word > span', { clearProps: 'all' });
   }
 
+  /* ---------- Hero stories (auto cycling destination slides) ---------- */
+  (function heroStories() {
+    const slides = $$('.hero__slide'), segs = $$('#heroStories span');
+    if (slides.length < 2) return;
+    const place = $('#heroPlace'), sub = $('#heroSub'), idx = $('#heroIdx');
+    const DUR = 6500; let i = 0, timer = null;
+    document.documentElement.style.setProperty('--story-dur', DUR + 'ms');
+    const setText = (el, txt) => {
+      if (REDUCED) { el.textContent = txt; return; }
+      gsap.to(el, { yPercent: 110, opacity: 0, duration: .35, ease: 'power2.in', onComplete: () => { el.textContent = txt; gsap.fromTo(el, { yPercent: -110, opacity: 0 }, { yPercent: 0, opacity: 1, duration: .6, ease: 'expo.out' }); } });
+    };
+    const go = (n) => {
+      n = (n + slides.length) % slides.length;
+      slides[i].classList.remove('is-active');
+      i = n;
+      const s = slides[i];
+      s.classList.add('is-active');
+      segs.forEach((seg, k) => { seg.classList.remove('is-active', 'is-done'); if (k < i) seg.classList.add('is-done'); });
+      void segs[i].offsetWidth; /* restart the fill animation */
+      segs[i].classList.add('is-active');
+      setText(place, s.dataset.place); setText(sub, s.dataset.sub);
+      idx.textContent = String(i + 1).padStart(2, '0');
+      clearTimeout(timer);
+      if (!REDUCED) timer = setTimeout(() => go(i + 1), DUR);
+    };
+    segs.forEach((seg) => seg.addEventListener('click', () => go(parseInt(seg.dataset.go))));
+    if (!REDUCED) timer = setTimeout(() => go(1), DUR);
+    document.addEventListener('visibilitychange', () => { if (document.hidden) clearTimeout(timer); else if (!REDUCED) timer = setTimeout(() => go(i + 1), 1500); });
+    /* Mouse parallax depth */
+    if (!isTouch && !REDUCED) {
+      const wrap = $('#heroSlides'), content = $('.hero__content');
+      $('#hero').addEventListener('mousemove', (e) => {
+        const dx = (e.clientX / window.innerWidth - .5), dy = (e.clientY / window.innerHeight - .5);
+        gsap.to(wrap, { x: dx * -28, y: dy * -18, duration: 1.2, ease: 'power3.out' });
+        gsap.to(content, { x: dx * 10, y: dy * 6, duration: 1.2, ease: 'power3.out' });
+      });
+    }
+  })();
+
   /* ---------- Counters ---------- */
   function animateCounters(scope = document) {
     $$('.count', scope).forEach((el) => {
