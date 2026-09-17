@@ -223,6 +223,8 @@
     gsap.to(hero.querySelectorAll('.reveal'), { opacity: 1, y: 0, duration: 1, ease: 'expo.out', stagger: 0.12, delay: 0.35 });
     gsap.from('.nav__inner', { y: -30, opacity: 0, duration: 1, ease: 'expo.out', delay: 0.2 });
     animateCounters(hero);
+    /* Safety net: if the animation ticker stalls (background tab, throttled rAF), never leave the hero hidden */
+    setTimeout(() => gsap.set(['.nav__inner', ...hero.querySelectorAll('.reveal, .word > span')], { opacity: 1, y: 0, x: 0, filter: 'none' }), 5000);
   }
 
   /* Section reveals */
@@ -278,6 +280,24 @@
         gsap.to(content, { x: dx * 10, y: dy * 6, duration: 1.2, ease: 'power3.out' });
       });
     }
+  })();
+
+  /* ---------- Hero scene: bridge hangers + responsive framing ---------- */
+  (function heroScene() {
+    const scene = $('#heroScene'); if (!scene) return;
+    const rope = $('#ropePath'), deck = $('#deckPath'), hangers = $('#bridgeHangers');
+    if (rope && deck && hangers) {
+      const rl = rope.getTotalLength(), dl = deck.getTotalLength(), n = 22;
+      for (let k = 1; k < n; k++) {
+        const a = rope.getPointAtLength(rl * k / n), b = deck.getPointAtLength(dl * k / n);
+        const l = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        l.setAttribute('x1', a.x.toFixed(1)); l.setAttribute('y1', a.y.toFixed(1)); l.setAttribute('x2', b.x.toFixed(1)); l.setAttribute('y2', b.y.toFixed(1));
+        hangers.appendChild(l);
+      }
+    }
+    const frame = () => { const m = window.innerWidth < 768; scene.setAttribute('viewBox', m ? '672 300 1160 780' : '0 0 1920 1080'); scene.setAttribute('preserveAspectRatio', 'xMidYMax slice'); };
+    frame(); window.addEventListener('resize', frame);
+    if (REDUCED) scene.pauseAnimations && scene.pauseAnimations();
   })();
 
   /* ---------- Counters ---------- */

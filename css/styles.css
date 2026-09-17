@@ -204,6 +204,38 @@ body.no-cursor .cursor{display:block}
 .hero__veil{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(14,27,34,.5) 0%,rgba(14,27,34,.12) 40%,rgba(14,27,34,.94) 100%),linear-gradient(90deg,rgba(14,27,34,.62) 0%,transparent 60%)}
 .hero__mist{position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(60% 40% at 30% 80%,rgba(143,211,232,.10),transparent 70%),radial-gradient(40% 30% at 80% 20%,rgba(243,156,43,.10),transparent 70%);animation:mist 14s ease-in-out infinite alternate}
 @keyframes mist{from{transform:translate(-2%,1%) scale(1)}to{transform:translate(2%,-2%) scale(1.08)}}
+/* Foreground animated scene */
+.hero__scene{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none;overflow:visible}
+.mtn-far{fill:url(#mtnFar)}
+.mtn-near{fill:url(#mtnNear)}
+.hiker{filter:drop-shadow(0 1px 1px rgba(0,0,0,.5))}
+.ridge-light{fill:none;stroke:rgba(244,247,248,.35);stroke-width:2;stroke-linejoin:round}
+.ridge-shade{fill:rgba(0,0,0,.28)}
+.mtn-mid{fill:url(#mtnMid)}
+.rock-lines path{fill:none;stroke:rgba(244,247,248,.07);stroke-width:2;stroke-linecap:round}
+.mist ellipse{animation:mistDrift 16s ease-in-out infinite alternate}
+.mist ellipse:nth-child(2){animation-duration:22s;animation-delay:-8s}
+.mist2{animation:mistDrift 20s ease-in-out infinite alternate-reverse}
+@keyframes mistDrift{from{transform:translateX(-60px)}to{transform:translateX(60px)}}
+.bridge{transform-box:fill-box;transform-origin:50% 0%;animation:sway 5.5s ease-in-out infinite alternate}
+@keyframes sway{from{transform:rotate(-.7deg) translateY(0)}to{transform:rotate(.7deg) translateY(4px)}}
+.rope{fill:none;stroke:#0b1519;stroke-width:4;stroke-linecap:round}
+.deck-base{fill:none;stroke:#0b1519;stroke-width:12;stroke-linecap:round}
+.deck-planks{fill:none;stroke:#4a3620;stroke-width:7;stroke-dasharray:6 5}
+.bridge__hangers line{stroke:#0b1519;stroke-width:1.8}
+.post{fill:#0b1519}
+.flock use{stroke:#F4F7F8;stroke-width:3;opacity:.85;filter:drop-shadow(0 1px 1px rgba(0,0,0,.6))}
+.flock-a{animation:flyA 48s linear infinite}
+.flock-b{animation:flyB 70s linear infinite;animation-delay:-30s}
+.flock-a use{transform-box:fill-box;animation:glide 3.2s ease-in-out infinite alternate}
+.flock-b use{transform-box:fill-box;animation:glide 4s ease-in-out infinite alternate}
+.flock use.b2,.flock use.b5{animation-delay:-1s}.flock use.b3,.flock use.b6{animation-delay:-2s}.flock use.b4,.flock use.b7{animation-delay:-.5s}
+.flock-b use{opacity:.6}
+@keyframes flyA{from{transform:translate(-400px,80px) scale(1.8)}to{transform:translate(2100px,-60px) scale(1.8)}}
+@keyframes flyB{from{transform:translate(2300px,0) scale(-1.2,1.2)}to{transform:translate(-300px,-80px) scale(-1.2,1.2)}}
+@keyframes glide{from{transform:translateY(-6px)}to{transform:translateY(6px)}}
+@media (prefers-reduced-motion:reduce){.bridge,.mist ellipse,.mist2,.flock-a,.flock-b,.flock use{animation:none!important}}
+
 .hero__live{display:flex;align-items:center;gap:10px;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--ice);flex-wrap:wrap;margin-bottom:22px;padding:10px 14px;border-radius:12px;background:rgba(14,27,34,.45);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(10px);width:fit-content;max-width:100%}
 .hero__live i{width:8px;height:8px;border-radius:50%;background:#ff4d4d;animation:livePulse 1.6s ease-out infinite}
 @keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(255,77,77,.7)}100%{box-shadow:0 0 0 10px rgba(255,77,77,0)}}
@@ -240,7 +272,7 @@ body.no-cursor .cursor{display:block}
 .hero__scroll-line::after{content:"";position:absolute;left:0;top:0;width:100%;height:50%;background:var(--orange);animation:scrollLine 1.8s var(--ease) infinite}
 @keyframes scrollLine{0%{transform:translateY(-100%)}100%{transform:translateY(200%)}}
 @media (max-width:1024px){.hero__inner{grid-template-columns:1fr}.departure-card{justify-self:start;max-width:420px}}
-@media (max-width:768px){.hero{padding:130px 0 70px}.hero__title{max-width:none}.hero__live{font-size:.6rem;gap:8px;margin-bottom:16px}.hero__live em{font-size:.74rem}.hero__stories{top:92px;left:var(--gutter);right:var(--gutter);width:auto}.hero__stats li{min-width:calc(50% - 5px);flex:1}.hero__scroll{display:none}.hero__cta{gap:14px}}
+@media (max-width:768px){.hero{padding:130px 0 70px}.hero__title{max-width:none}.hero__live{font-size:.6rem;gap:8px;margin-bottom:16px}.hero__live em{font-size:.74rem}.hero__stories{top:92px;left:var(--gutter);right:var(--gutter);width:auto}.hero__scene{opacity:.8}.hero__stats li{min-width:calc(50% - 5px);flex:1}.hero__scroll{display:none}.hero__cta{gap:14px}}
 
 /* =========================================================
    Marquee
