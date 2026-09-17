@@ -1,0 +1,7 @@
+# Internal working files, not part of the site
+RAHGEER-WEBSITE-PROMPT.md
+IMG_*.PNG
+serve.ps1
+.DS_Store
+Thumbs.db
+.vercel

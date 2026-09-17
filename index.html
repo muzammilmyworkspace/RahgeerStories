@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rahgeer Stories | Gilgit Baltistan, Hunza, Skardu and International Tours from Pakistan</title>
+<meta name="description" content="Rahgeer Stories plans, guides and protects premium group, private, couples, family and creator tours across Hunza, Skardu, Deosai, Fairy Meadows, Naran and beyond to Turkey, Baku, Dubai and Thailand. 200+ travelers from 5+ countries. Plan your trip free.">
+<meta property="og:title" content="Rahgeer Stories | Walk the road. Live the story.">
+<meta property="og:description" content="Premium tours across Gilgit Baltistan and the world. Licensed, vetted, 24/7 support. Get a custom plan in 24 hours.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1660602603310-05c6007a759f?auto=format&fit=crop&w=1200&q=80">
+<meta name="theme-color" content="#0E1B22">
+<link rel="icon" type="image/png" href="assets/logo-light.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- Preloader -->
+<div class="preloader" id="preloader">
+  <div class="preloader__panel preloader__panel--top"></div>
+  <div class="preloader__panel preloader__panel--bottom"></div>
+  <div class="preloader__content">
+    <img src="assets/logo-light.png" alt="Rahgeer Stories logo" class="preloader__logo">
+    <div class="preloader__line"><span></span></div>
+    <div class="preloader__meta"><span class="preloader__count">0</span><span class="preloader__label">Loading the road</span></div>
+  </div>
+</div>
+
+<!-- Global animated contour lines -->
+<canvas id="contour" class="contour" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+<div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
+
+<!-- Custom cursor -->
+<div class="cursor" aria-hidden="true"><div class="cursor__dot"></div><div class="cursor__ring"><span class="cursor__label"></span></div></div>
+
+<!-- Navigation -->
+<header class="nav" id="nav">
+  <div class="nav__inner container">
+    <a href="#top" class="nav__logo" aria-label="Rahgeer Stories home" data-scroll>
+      <img src="assets/logo-light.png" alt="Rahgeer Stories" class="nav__logo-light">
+      <img src="assets/logo-dark.png" alt="" class="nav__logo-dark" aria-hidden="true">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#destinations" data-scroll>Destinations</a>
+      <a href="#trips" data-scroll>Trips</a>
+      <a href="#departures" data-scroll>Departures</a>
+      <a href="#gallery" data-scroll>Gallery</a>
+      <a href="#story" data-scroll>About</a>
+    </nav>
+    <div class="nav__actions">
+      <a href="https://wa.me/923367244337?text=Hi%20Rahgeer%2C%20I%20want%20to%20plan%20a%20trip" target="_blank" rel="noopener" class="nav__wa" aria-label="WhatsApp Rahgeer">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m.01 1.67c4.54 0 8.23 3.7 8.23 8.24 0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c.01-4.55 3.7-8.25 8.25-8.25M8.53 7.33c-.16 0-.43.06-.66.31-.22.25-.87.86-.87 2.07 0 1.22.89 2.39 1 2.56.14.17 1.76 2.67 4.25 3.73.59.27 1.05.42 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.27-.25-.14-1.47-.74-1.69-.82-.23-.08-.37-.12-.56.12-.16.25-.64.81-.78.97-.15.17-.29.19-.53.07-.26-.13-1.06-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.12-.24-.01-.39.11-.5.11-.11.27-.29.37-.44.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.11-.56-1.35-.77-1.84-.2-.48-.4-.42-.56-.43-.14 0-.3-.01-.47-.01"/></svg>
+      </a>
+      <a href="#planner" class="btn btn--primary btn--sm" data-scroll data-magnetic><span>Plan My Trip</span></a>
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<div class="menu" id="menu" aria-hidden="true">
+  <div class="menu__bg"><img src="https://images.unsplash.com/photo-1660602603310-05c6007a759f?auto=format&fit=crop&w=1200&q=70" alt=""></div>
+  <div class="menu__inner">
+    <nav class="menu__links">
+      <a href="#destinations" data-scroll data-img="https://images.unsplash.com/photo-1690482688252-d500b557402a?auto=format&fit=crop&w=1200&q=70">Destinations</a>
+      <a href="#trips" data-scroll data-img="https://images.unsplash.com/photo-1521892125404-76a993e24362?auto=format&fit=crop&w=1200&q=70">Trips</a>
+      <a href="#departures" data-scroll data-img="https://images.unsplash.com/photo-1695405919988-638139ec112a?auto=format&fit=crop&w=1200&q=70">Departures</a>
+      <a href="#gallery" data-scroll data-img="https://images.unsplash.com/photo-1691077015817-64ee69ec020c?auto=format&fit=crop&w=1200&q=70">Gallery</a>
+      <a href="#story" data-scroll data-img="https://images.unsplash.com/photo-1633100291356-19e4e0dcb98f?auto=format&fit=crop&w=1200&q=70">About</a>
+    </nav>
+    <div class="menu__foot">
+      <a href="#planner" class="btn btn--primary" data-scroll><span>Plan My Trip, It's Free</span></a>
+      <a href="https://wa.me/923367244337" target="_blank" rel="noopener" class="btn btn--ghost"><span>WhatsApp 0336 7244337</span></a>
+      <div class="menu__social">
+        <a href="https://www.instagram.com/rahgeerstories" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.tiktok.com" target="_blank" rel="noopener">TikTok</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main id="top">
+
+<!-- 1. HERO -->
+<section class="hero" id="hero">
+  <div class="hero__media">
+    <img src="https://images.unsplash.com/photo-1660602603310-05c6007a759f?auto=format&fit=crop&w=2000&q=80" alt="Hunza valley in autumn with snow peaks" class="hero__img" fetchpriority="high">
+    <div class="hero__veil"></div>
+  </div>
+  <div class="container hero__inner">
+    <div class="hero__content">
+      <p class="eyebrow reveal">Trusted by 200+ travelers from 5+ countries</p>
+      <h1 class="hero__title split">Some roads change you. <em>We know</em> every one of them.</h1>
+      <p class="hero__sub reveal">From Hunza to Skardu to the world beyond, Rahgeer Stories plans, guides and protects every mile of your journey. You just show up and live it.</p>
+      <div class="hero__cta reveal">
+        <a href="#planner" class="btn btn--primary btn--lg" data-scroll data-magnetic><span>Plan My Trip, It's Free</span><i class="btn__arrow"></i></a>
+        <a href="https://www.instagram.com/rahgeerstories" target="_blank" rel="noopener" class="btn btn--play" data-cursor="Play"><i class="btn__play"></i><span>Watch 60 Seconds of the North</span></a>
+      </div>
+      <ul class="hero__stats reveal">
+        <li><strong><span class="count" data-to="200">0</span>+</strong><span>Travelers Guided</span></li>
+        <li><strong><span class="count" data-to="5">0</span>+</strong><span>Countries Onboarded</span></li>
+        <li><strong><span class="count" data-to="4.9" data-dec="1">0</span></strong><span>Star Rating on Google and Instagram</span></li>
+      </ul>
+    </div>
+    <aside class="departure-card reveal" aria-label="Next departure">
+      <span class="departure-card__tag">Next Departure</span>
+      <h3>Hunza and Skardu, 8 Days</h3>
+      <p class="departure-card__date">12 Oct, Islamabad to Islamabad</p>
+      <div class="departure-card__seats"><span class="seats-bar"><i style="--fill:35%"></i></span><span>6 seats left</span></div>
+      <div class="departure-card__foot">
+        <span class="price">From PKR 68,000</span>
+        <a href="#planner" data-scroll data-preset-dest="Hunza and Skardu" data-preset-who="Friends Group" class="link-arrow">Grab a Seat</a>
+      </div>
+    </aside>
+  </div>
+  <div class="hero__scroll" aria-hidden="true"><span class="hero__scroll-line"></span><span>Scroll to begin your story</span></div>
+</section>
+
+<!-- 2. TRUST MARQUEE -->
+<section class="marquee-wrap" aria-label="Trusted by">
+  <div class="marquee marquee--left">
+    <div class="marquee__track">
+      <span>@wanderwithsara</span><i></i><span><img class="flag" src="https://flagcdn.com/w40/pk.png" alt=""> Pakistan</span><i></i><span>@aliontheroad</span><i></i><span><img class="flag" src="https://flagcdn.com/w40/tr.png" alt=""> Turkey</span><i></i><span>@istanbulmert</span><i></i><span><img class="flag" src="https://flagcdn.com/w40/gb.png" alt=""> United Kingdom</span><i></i><span>@aylinexplores</span><i></i><span><img class="flag" src="https://flagcdn.com/w40/ae.png" alt=""> UAE</span><i></i><span>@hamzaupnorth</span><i></i><span><img class="flag" src="https://flagcdn.com/w40/az.png" alt=""> Azerbaijan</span><i></i><span>@zoyatravels</span><i></i><span><img class="flag" src="https://flagcdn.com/w40/us.png" alt=""> USA</span><i></i>
+      <span>@wanderwithsara</span><i></i><span><img class="flag" src="https://flagcdn.com/w40/pk.png" alt=""> Pakistan</span><i></i><span>@aliontheroad</span><i></i><span><img class="flag" src="https://flagcdn.com/w40/tr.png" alt=""> Turkey</span><i></i><span>@istanbulmert</span><i></i><span><img class="flag" src="https://flagcdn.com/w40/gb.png" alt=""> United Kingdom</span><i></i><span>@aylinexplores</span><i></i><span><img class="flag" src="https://flagcdn.com/w40/ae.png" alt=""> UAE</span><i></i><span>@hamzaupnorth</span><i></i><span><img class="flag" src="https://flagcdn.com/w40/az.png" alt=""> Azerbaijan</span><i></i><span>@zoyatravels</span><i></i><span><img class="flag" src="https://flagcdn.com/w40/us.png" alt=""> USA</span><i></i>
+    </div>
+  </div>
+  <div class="marquee marquee--right">
+    <div class="marquee__track">
+      <span>Licensed Tour Operator</span><i></i><span>24/7 On Trip Support</span><i></i><span>Women Friendly Trips</span><i></i><span>Verified Hotels</span><i></i><span>Experienced Mountain Drivers</span><i></i><span>First Aid Trained Guides</span><i></i>
+      <span>Licensed Tour Operator</span><i></i><span>24/7 On Trip Support</span><i></i><span>Women Friendly Trips</span><i></i><span>Verified Hotels</span><i></i><span>Experienced Mountain Drivers</span><i></i><span>First Aid Trained Guides</span><i></i>
+    </div>
+  </div>
+</section>
+
+<!-- 3. PROMISE -->
+<section class="promise section" id="promise">
+  <div class="container promise__grid">
+    <div class="promise__sticky">
+      <p class="eyebrow reveal">The Rahgeer Promise</p>
+      <h2 class="h2 split">Travel with people who treat your trip like their own family's.</h2>
+      <p class="promise__rot reveal">Every Rahgeer trip is <span class="rot-word" id="rotWord"><b>safe</b><b>seamless</b><b>cinematic</b><b>personal</b></span></p>
+      <a href="#planner" class="btn btn--primary" data-scroll data-magnetic><span>Get My Custom Itinerary</span><i class="btn__arrow"></i></a>
+    </div>
+    <ol class="promise__list">
+      <li class="promise__item reveal">
+        <span class="promise__num">01</span>
+        <div><h3>Safety before scenery</h3><p>Vetted drivers, mountain trained guides, live weather checks and first aid kits in every vehicle. The view is only worth it when you get home to tell the story.</p></div>
+      </li>
+      <li class="promise__item reveal">
+        <span class="promise__num">02</span>
+        <div><h3>No hidden costs, ever</h3><p>One transparent price. Every hotel, every meal, every jeep ride listed before you pay a rupee. What we quote is what you pay.</p></div>
+      </li>
+      <li class="promise__item reveal">
+        <span class="promise__num">03</span>
+        <div><h3>Real people, real time</h3><p>A dedicated trip manager on WhatsApp before, during and after your trip. Not a bot, not a call center. A person who knows your name and your route.</p></div>
+      </li>
+      <li class="promise__item reveal">
+        <span class="promise__num">04</span>
+        <div><h3>Handpicked stays</h3><p>Our team has slept in every hotel we book. Clean sheets, hot water, a view worth waking up for. If we would not stay there, you will not either.</p></div>
+      </li>
+      <li class="promise__item reveal">
+        <span class="promise__num">05</span>
+        <div><h3>Your pace, your story</h3><p>Group departures, private trips, creator collaborations, honeymoon escapes. No forced schedules. We build the itinerary around the traveler, never the other way around.</p></div>
+      </li>
+    </ol>
+  </div>
+  <div class="strip-cta">
+    <div class="container strip-cta__inner">
+      <p>Want this level of care on your next trip? Tell us where you want to go.</p>
+      <a href="#planner" class="btn btn--ghost btn--sm" data-scroll><span>Tell Us Where You Want to Go</span><i class="btn__arrow"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- 4. DESTINATIONS -->
+<section class="dest section" id="destinations">
+  <div class="container dest__head">
+    <div>
+      <p class="eyebrow reveal">Destinations</p>
+      <h2 class="h2 split">Choose your sky.</h2>
+    </div>
+    <p class="reveal dest__hint">Scroll to explore</p>
+  </div>
+  <div class="dest__pin">
+    <div class="dest__track" id="destTrack" data-cursor="Drag">
+      <article class="dest__panel" style="--img:url('https://images.unsplash.com/photo-1660602603310-05c6007a759f?auto=format&fit=crop&w=1400&q=75')">
+        <div class="dest__meta"><span>Best: Apr to Oct</span><span>5 to 7 days</span><span>From PKR 38,500</span></div>
+        <h3>Hunza</h3><p>Where apricot blossoms meet 7,000 meter peaks.</p>
+        <a href="#planner" data-scroll data-preset-dest="Hunza" class="link-arrow">Plan this trip</a>
+      </article>
+      <article class="dest__panel" style="--img:url('https://images.unsplash.com/photo-1642267043123-bd7dbe76c6c7?auto=format&fit=crop&w=1400&q=75')">
+        <div class="dest__meta"><span>Best: May to Oct</span><span>6 to 8 days</span><span>From PKR 46,000</span></div>
+        <h3>Skardu</h3><p>Lakes so still the mountains forget which way is up.</p>
+        <a href="#planner" data-scroll data-preset-dest="Skardu" class="link-arrow">Plan this trip</a>
+      </article>
+      <article class="dest__panel" style="--img:url('https://images.unsplash.com/photo-1634630486380-173cfa6956a8?auto=format&fit=crop&w=1400&q=75')">
+        <div class="dest__meta"><span>Best: Jul to Sep</span><span>5 days</span><span>From PKR 44,000</span></div>
+        <h3>Deosai</h3><p>A plateau above the clouds, closer to the stars than the road.</p>
+        <a href="#planner" data-scroll data-preset-dest="Deosai" class="link-arrow">Plan this trip</a>
+      </article>
+      <article class="dest__panel" style="--img:url('https://images.unsplash.com/photo-1660754664913-24a235451454?auto=format&fit=crop&w=1400&q=75')">
+        <div class="dest__meta"><span>Best: May to Sep</span><span>4 days</span><span>From PKR 32,000</span></div>
+        <h3>Fairy Meadows</h3><p>Wake up under the ninth highest mountain on Earth.</p>
+        <a href="#planner" data-scroll data-preset-dest="Fairy Meadows" class="link-arrow">Plan this trip</a>
+      </article>
+      <article class="dest__panel" style="--img:url('https://images.unsplash.com/photo-1565182027317-ca49ef1405f5?auto=format&fit=crop&w=1400&q=75')">
+        <div class="dest__meta"><span>Best: May to Oct</span><span>3 days</span><span>From PKR 18,500</span></div>
+        <h3>Naran Kaghan</h3><p>Saif ul Malook at sunrise. Every legend starts with a lake like this.</p>
+        <a href="#planner" data-scroll data-preset-dest="Naran Kaghan" class="link-arrow">Plan this trip</a>
+      </article>
+      <article class="dest__panel" style="--img:url('https://images.unsplash.com/photo-1550586678-f7225f03c44b?auto=format&fit=crop&w=1400&q=75')">
+        <div class="dest__meta"><span>Best: Apr to Oct</span><span>4 days</span><span>From PKR 24,000</span></div>
+        <h3>Swat and Kumrat</h3><p>Pine forests, glacier rivers and the greenest road in Pakistan.</p>
+        <a href="#planner" data-scroll data-preset-dest="Swat and Kumrat" class="link-arrow">Plan this trip</a>
+      </article>
+      <article class="dest__panel" style="--img:url('https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=1400&q=75')">
+        <div class="dest__meta"><span>Year round</span><span>7 days</span><span>From PKR 285,000</span></div>
+        <h3>Turkey</h3><p>Istanbul at dusk, Cappadocia at dawn, Antalya in between.</p>
+        <a href="#planner" data-scroll data-preset-dest="Turkey" class="link-arrow">Plan this trip</a>
+      </article>
+      <article class="dest__panel" style="--img:url('https://images.unsplash.com/photo-1596306499398-8d88944a5ec4?auto=format&fit=crop&w=1400&q=75')">
+        <div class="dest__meta"><span>Year round</span><span>5 days</span><span>From PKR 165,000</span></div>
+        <h3>Baku</h3><p>Flame Towers, old city walls and the Caspian wind in your hair.</p>
+        <a href="#planner" data-scroll data-preset-dest="Baku" class="link-arrow">Plan this trip</a>
+      </article>
+      <article class="dest__panel" style="--img:url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1400&q=75')">
+        <div class="dest__meta"><span>Oct to Apr</span><span>4 days</span><span>From PKR 145,000</span></div>
+        <h3>Dubai</h3><p>Desert dunes by day, a skyline made of light by night.</p>
+        <a href="#planner" data-scroll data-preset-dest="Dubai" class="link-arrow">Plan this trip</a>
+      </article>
+      <article class="dest__panel" style="--img:url('https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=1400&q=75')">
+        <div class="dest__meta"><span>Nov to Mar</span><span>6 days</span><span>From PKR 195,000</span></div>
+        <h3>Thailand</h3><p>Longtail boats, island mornings and street food worth the flight.</p>
+        <a href="#planner" data-scroll data-preset-dest="Thailand" class="link-arrow">Plan this trip</a>
+      </article>
+    </div>
+  </div>
+  <div class="container dest__foot reveal">
+    <p>Can't decide? Answer 4 questions and we'll match you with your perfect route.</p>
+    <a href="#planner" class="btn btn--primary" data-scroll data-magnetic><span>Find My Route</span><i class="btn__arrow"></i></a>
+  </div>
+</section>
+
+<!-- 5. TRIP STYLES -->
+<section class="styles section" id="trips">
+  <div class="container">
+    <p class="eyebrow reveal">Trip Styles</p>
+    <h2 class="h2 split">Every kind of traveler. <em>One kind</em> of care.</h2>
+    <div class="styles__grid">
+      <ul class="styles__tabs" role="tablist">
+        <li><button class="styles__tab is-active" role="tab" data-tab="0">Group Adventures</button></li>
+        <li><button class="styles__tab" role="tab" data-tab="1">Private Customized</button></li>
+        <li><button class="styles__tab" role="tab" data-tab="2">Creator and Influencer Trips</button></li>
+        <li><button class="styles__tab" role="tab" data-tab="3">Couples and Honeymoon</button></li>
+        <li><button class="styles__tab" role="tab" data-tab="4">Family Trips</button></li>
+        <li><button class="styles__tab" role="tab" data-tab="5">Corporate and Student</button></li>
+      </ul>
+      <div class="styles__stage">
+        <div class="styles__media">
+          <img class="is-active" src="https://images.unsplash.com/photo-1664872763520-348c1cbbade4?auto=format&fit=crop&w=1200&q=75" alt="Group camp at Fairy Meadows with tea on the table">
+          <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?auto=format&fit=crop&w=1200&q=75" alt="Private room with a mountain view">
+          <img src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=1200&q=75" alt="Creator photographing balloons in Cappadocia">
+          <img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&w=1200&q=75" alt="Quiet lake morning for two">
+          <img src="https://images.unsplash.com/photo-1521892125404-76a993e24362?auto=format&fit=crop&w=1200&q=75" alt="Shangrila resort Skardu, family friendly">
+          <img src="https://images.unsplash.com/photo-1695724426547-c695ce34c358?auto=format&fit=crop&w=1200&q=75" alt="Road trip through the mountains">
+        </div>
+        <div class="styles__panels">
+          <div class="styles__panel is-active">
+            <h3>Group Adventures</h3>
+            <p>Fixed dates, friendly strangers who become lifelong friends, one all inclusive price. Just pick a departure.</p>
+            <ul><li>8 to 16 travelers per group</li><li>Trip manager travels with you</li><li>Hotels, transport, meals and permits included</li></ul>
+            <a href="#departures" class="btn btn--primary btn--sm" data-scroll><span>See Upcoming Departures</span><i class="btn__arrow"></i></a>
+          </div>
+          <div class="styles__panel">
+            <h3>Private Customized</h3>
+            <p>Your dates, your route, your car, your people. We design it from a blank page and you approve every line.</p>
+            <ul><li>Any start date, any duration</li><li>Private 4x4 or luxury coaster</li><li>Itinerary revised until it feels right</li></ul>
+            <a href="#planner" class="btn btn--primary btn--sm" data-scroll data-preset-who="Friends Group"><span>Get My Custom Itinerary</span><i class="btn__arrow"></i></a>
+          </div>
+          <div class="styles__panel">
+            <h3>Creator and Influencer Trips</h3>
+            <p>You bring the camera. We bring the locations, the light, the permits and the local stories nobody else can show you.</p>
+            <ul><li>Sunrise and golden hour scheduling</li><li>Drone friendly locations and permissions</li><li>Collaboration packages for creators with 50K+ followers</li></ul>
+            <a href="#planner" class="btn btn--primary btn--sm" data-scroll data-preset-who="Creator Trip"><span>Apply for a Creator Trip</span><i class="btn__arrow"></i></a>
+          </div>
+          <div class="styles__panel">
+            <h3>Couples and Honeymoon</h3>
+            <p>Private rooms with a view, sunrise breakfasts on the lake, a driver who knows when to disappear. Your trip, without the crowd.</p>
+            <ul><li>Handpicked romantic stays</li><li>Private transport throughout</li><li>Surprise setups on request</li></ul>
+            <a href="#planner" class="btn btn--primary btn--sm" data-scroll data-preset-who="Couple"><span>Plan Our Escape</span><i class="btn__arrow"></i></a>
+          </div>
+          <div class="styles__panel">
+            <h3>Family Trips</h3>
+            <p>Slower mornings, safer roads, kid friendly hotels and a team that has traveled with grandparents and toddlers alike.</p>
+            <ul><li>Family rooms and connected suites</li><li>Shorter drive days</li><li>Doctor on call throughout the trip</li></ul>
+            <a href="#planner" class="btn btn--primary btn--sm" data-scroll data-preset-who="Family"><span>Plan a Family Trip</span><i class="btn__arrow"></i></a>
+          </div>
+          <div class="styles__panel">
+            <h3>Corporate and Student</h3>
+            <p>Team retreats and university tours with structured schedules, bulk pricing and a coordinator who handles every headcount.</p>
+            <ul><li>Groups of 20 to 100</li><li>Invoicing and documentation handled</li><li>Team activities and bonfire nights</li></ul>
+            <a href="#planner" class="btn btn--primary btn--sm" data-scroll data-preset-who="Corporate"><span>Request a Group Quote</span><i class="btn__arrow"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. DEPARTURES BOARD -->
+<section class="board section" id="departures">
+  <div class="container">
+    <div class="board__head">
+      <div>
+        <p class="eyebrow reveal">Upcoming Departures</p>
+        <h2 class="h2 split">Seats are moving.</h2>
+      </div>
+      <div class="board__filters reveal">
+        <button class="chip is-active" data-filter="all">All</button>
+        <button class="chip" data-filter="north">North Pakistan</button>
+        <button class="chip" data-filter="intl">International</button>
+        <button class="chip" data-filter="month">This Month</button>
+      </div>
+    </div>
+    <div class="board__table" id="board">
+      <div class="board__row board__row--head"><span>Destination</span><span>Dates</span><span>Duration</span><span>Price</span><span>Seats</span><span></span></div>
+      <div class="board__row" data-cat="north month" data-seats="4"><span class="flip" data-text="Hunza Valley"></span><span class="flip" data-text="3 Oct to 7 Oct"></span><span class="flip" data-text="5 Days"></span><span class="flip" data-text="PKR 38,500"></span><span class="seats"><i class="seats-bar"><b style="--fill:25%"></b></i>4 left <em class="hot">Filling fast</em></span><a href="#planner" data-scroll data-preset-dest="Hunza" class="btn btn--ghost btn--xs"><span>Reserve</span></a></div>
+      <div class="board__row" data-cat="north month" data-seats="9"><span class="flip" data-text="Skardu"></span><span class="flip" data-text="10 Oct to 15 Oct"></span><span class="flip" data-text="6 Days"></span><span class="flip" data-text="PKR 46,000"></span><span class="seats"><i class="seats-bar"><b style="--fill:55%"></b></i>9 left</span><a href="#planner" data-scroll data-preset-dest="Skardu" class="btn btn--ghost btn--xs"><span>Reserve</span></a></div>
+      <div class="board__row" data-cat="north month" data-seats="6"><span class="flip" data-text="Hunza and Skardu"></span><span class="flip" data-text="12 Oct to 19 Oct"></span><span class="flip" data-text="8 Days"></span><span class="flip" data-text="PKR 68,000"></span><span class="seats"><i class="seats-bar"><b style="--fill:35%"></b></i>6 left</span><a href="#planner" data-scroll data-preset-dest="Hunza and Skardu" class="btn btn--ghost btn--xs"><span>Reserve</span></a></div>
+      <div class="board__row" data-cat="north month" data-seats="2"><span class="flip" data-text="Fairy Meadows"></span><span class="flip" data-text="18 Oct to 21 Oct"></span><span class="flip" data-text="4 Days"></span><span class="flip" data-text="PKR 32,000"></span><span class="seats"><i class="seats-bar"><b style="--fill:12%"></b></i>2 left <em class="hot">Filling fast</em></span><a href="#planner" data-scroll data-preset-dest="Fairy Meadows" class="btn btn--ghost btn--xs"><span>Reserve</span></a></div>
+      <div class="board__row" data-cat="intl" data-seats="11"><span class="flip" data-text="Turkey"></span><span class="flip" data-text="2 Nov to 8 Nov"></span><span class="flip" data-text="7 Days"></span><span class="flip" data-text="PKR 285,000"></span><span class="seats"><i class="seats-bar"><b style="--fill:65%"></b></i>11 left</span><a href="#planner" data-scroll data-preset-dest="Turkey" class="btn btn--ghost btn--xs"><span>Reserve</span></a></div>
+      <div class="board__row" data-cat="intl" data-seats="5"><span class="flip" data-text="Baku"></span><span class="flip" data-text="9 Nov to 13 Nov"></span><span class="flip" data-text="5 Days"></span><span class="flip" data-text="PKR 165,000"></span><span class="seats"><i class="seats-bar"><b style="--fill:30%"></b></i>5 left <em class="hot">Filling fast</em></span><a href="#planner" data-scroll data-preset-dest="Baku" class="btn btn--ghost btn--xs"><span>Reserve</span></a></div>
+      <div class="board__row" data-cat="intl" data-seats="14"><span class="flip" data-text="Dubai"></span><span class="flip" data-text="20 Nov to 23 Nov"></span><span class="flip" data-text="4 Days"></span><span class="flip" data-text="PKR 145,000"></span><span class="seats"><i class="seats-bar"><b style="--fill:80%"></b></i>14 left</span><a href="#planner" data-scroll data-preset-dest="Dubai" class="btn btn--ghost btn--xs"><span>Reserve</span></a></div>
+      <div class="board__row" data-cat="intl" data-seats="8"><span class="flip" data-text="Thailand"></span><span class="flip" data-text="5 Dec to 10 Dec"></span><span class="flip" data-text="6 Days"></span><span class="flip" data-text="PKR 195,000"></span><span class="seats"><i class="seats-bar"><b style="--fill:50%"></b></i>8 left</span><a href="#planner" data-scroll data-preset-dest="Thailand" class="btn btn--ghost btn--xs"><span>Reserve</span></a></div>
+    </div>
+    <div class="board__foot reveal">
+      <p>Dates don't fit? We run private departures any day of the year.</p>
+      <a href="#planner" class="btn btn--primary" data-scroll data-magnetic><span>Request Private Dates</span><i class="btn__arrow"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- 7. HOW IT WORKS -->
+<section class="how section" id="how">
+  <div class="container">
+    <p class="eyebrow reveal">How It Works</p>
+    <h2 class="h2 split">From message to mountain <em>in 3 steps.</em></h2>
+    <div class="how__path">
+      <svg class="how__svg" viewBox="0 0 1200 260" preserveAspectRatio="none" aria-hidden="true">
+        <path id="howPath" d="M45 60 C 300 60, 350 170, 600 170 S 900 60, 1160 60" fill="none" stroke="rgba(143,211,232,.18)" stroke-width="2" stroke-dasharray="6 8"/>
+        <path id="howPathGlow" d="M45 60 C 300 60, 350 170, 600 170 S 900 60, 1160 60" fill="none" stroke="#F39C2B" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <div class="how__steps">
+        <div class="how__step reveal">
+          <span class="how__marker">1</span>
+          <h3>Tell us your dream</h3>
+          <p>Fill the 2 minute form or send a WhatsApp. Where, when, who is coming, what you want to feel.</p>
+        </div>
+        <div class="how__step reveal">
+          <span class="how__marker">2</span>
+          <h3>Get a custom plan in 24 hours</h3>
+          <p>Day by day itinerary, hotels with photos, transport, one transparent price. Change anything you like.</p>
+        </div>
+        <div class="how__step reveal">
+          <span class="how__marker">3</span>
+          <h3>Pack your bag</h3>
+          <p>We handle bookings, permits, drivers and every detail. Your trip manager stays one message away the whole way.</p>
+        </div>
+      </div>
+    </div>
+    <div class="how__foot reveal">
+      <a href="#planner" class="btn btn--primary btn--lg" data-scroll data-magnetic><span>Start Step One Now</span><i class="btn__arrow"></i></a>
+      <small>No payment needed to get your plan.</small>
+    </div>
+  </div>
+</section>
+
+<!-- 8. GALLERY -->
+<section class="gallery section" id="gallery">
+  <div class="container gallery__head">
+    <p class="eyebrow reveal">Stories Frame by Frame</p>
+    <h2 class="h2 split">Real trips. <em>Real light.</em> No filters needed.</h2>
+  </div>
+  <div class="reel__pin">
+    <div class="reel" id="reel" data-cursor="View">
+      <div class="reel__holes reel__holes--top" aria-hidden="true"></div>
+      <div class="reel__track" id="reelTrack">
+        <figure class="reel__frame" data-cap="Attabad Lake, Hunza" data-by="@wanderwithsara"><img src="https://images.unsplash.com/photo-1690482688252-d500b557402a?auto=format&fit=crop&w=900&q=70" alt="Turquoise water of Attabad Lake" loading="lazy"></figure>
+        <figure class="reel__frame" data-cap="Nanga Parbat at night, Fairy Meadows" data-by="@hamzaupnorth"><img src="https://images.unsplash.com/photo-1691077015817-64ee69ec020c?auto=format&fit=crop&w=900&q=70" alt="Nanga Parbat under a sky full of stars" loading="lazy"></figure>
+        <figure class="reel__frame" data-cap="Shangrila Resort, Skardu" data-by="Rahgeer Team"><img src="https://images.unsplash.com/photo-1521892125404-76a993e24362?auto=format&fit=crop&w=900&q=70" alt="Red pagoda over the lake at Shangrila Skardu" loading="lazy"></figure>
+        <figure class="reel__frame" data-cap="Sheosar Lake, Deosai" data-by="@zoyatravels"><img src="https://images.unsplash.com/photo-1634630486380-173cfa6956a8?auto=format&fit=crop&w=900&q=70" alt="Sheosar Lake on the Deosai plateau" loading="lazy"></figure>
+        <figure class="reel__frame" data-cap="Passu Cones after snowfall" data-by="@aliontheroad"><img src="https://images.unsplash.com/photo-1695405919988-638139ec112a?auto=format&fit=crop&w=900&q=70" alt="Snow covered Passu Cones" loading="lazy"></figure>
+        <figure class="reel__frame" data-cap="Upper Kachura Lake, Skardu" data-by="Rahgeer Team"><img src="https://images.unsplash.com/photo-1709634483655-c0384d8a100f?auto=format&fit=crop&w=900&q=70" alt="Boats on Upper Kachura Lake" loading="lazy"></figure>
+        <figure class="reel__frame" data-cap="Cappadocia sunrise, Turkey" data-by="@istanbulmert"><img src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=900&q=70" alt="Hot air balloons over Cappadocia" loading="lazy"></figure>
+        <figure class="reel__frame" data-cap="Saif ul Malook, Naran" data-by="@aylinexplores"><img src="https://images.unsplash.com/photo-1565182027317-ca49ef1405f5?auto=format&fit=crop&w=900&q=70" alt="Boat on Lake Saif ul Malook" loading="lazy"></figure>
+        <figure class="reel__frame" data-cap="Wildflowers on Deosai" data-by="Rahgeer Team"><img src="https://images.unsplash.com/photo-1701763572611-b4cc5a72b2f7?auto=format&fit=crop&w=900&q=70" alt="Pink wildflowers on the Deosai plains" loading="lazy"></figure>
+        <figure class="reel__frame" data-cap="Camp morning, Fairy Meadows" data-by="@hamzaupnorth"><img src="https://images.unsplash.com/photo-1664872763520-348c1cbbade4?auto=format&fit=crop&w=900&q=70" alt="Tea kettle on a camp table below Nanga Parbat" loading="lazy"></figure>
+        <figure class="reel__frame" data-cap="Flame Towers, Baku" data-by="@zoyatravels"><img src="https://images.unsplash.com/photo-1596306499398-8d88944a5ec4?auto=format&fit=crop&w=900&q=70" alt="Flame Towers over Baku" loading="lazy"></figure>
+        <figure class="reel__frame" data-cap="Somewhere on the Karakoram Highway" data-by="Rahgeer Team"><img src="https://images.unsplash.com/photo-1633100291356-19e4e0dcb98f?auto=format&fit=crop&w=900&q=70" alt="Pakistan flag flying against the mountains" loading="lazy"></figure>
+      </div>
+      <div class="reel__holes reel__holes--bottom" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <div class="container postcards" id="postcards">
+    <p class="eyebrow reveal">Notes from the road. Drag them around, tap to flip.</p>
+    <div class="postcards__pile" id="pile" data-cursor="Drag">
+      <div class="postcard" style="--r:-6deg;--x:2%;--y:6%"><div class="postcard__inner"><div class="postcard__front"><img src="https://images.unsplash.com/photo-1562913346-61ae3ab9277e?auto=format&fit=crop&w=600&q=60" alt="Attabad Lake cliffs" loading="lazy"></div><div class="postcard__back"><p>Day 3, Attabad. Never seen water this blue. Thank you Rahgeer team.</p><span>Sana, Karachi</span></div></div></div>
+      <div class="postcard" style="--r:5deg;--x:24%;--y:2%"><div class="postcard__inner"><div class="postcard__front"><img src="https://images.unsplash.com/photo-1602147557719-1d65f9e58a24?auto=format&fit=crop&w=600&q=60" alt="Lake reflection in Skardu" loading="lazy"></div><div class="postcard__back"><p>Woke up at 5 for this. Our driver Iqbal had chai ready. Best morning of my life.</p><span>Tom, London</span></div></div></div>
+      <div class="postcard" style="--r:-3deg;--x:46%;--y:10%"><div class="postcard__inner"><div class="postcard__front"><img src="https://images.unsplash.com/photo-1664872756573-8b56401ee6b8?auto=format&fit=crop&w=600&q=60" alt="Fairy Meadows at dusk" loading="lazy"></div><div class="postcard__back"><p>Fairy Meadows with my parents. They said it was the trip of their lives. Mine too.</p><span>Bilal, Lahore</span></div></div></div>
+      <div class="postcard" style="--r:8deg;--x:66%;--y:4%"><div class="postcard__inner"><div class="postcard__front"><img src="https://images.unsplash.com/photo-1527838832700-5059252407fa?auto=format&fit=crop&w=600&q=60" alt="Blue Mosque at dusk" loading="lazy"></div><div class="postcard__back"><p>Istanbul in 7 days and not one wasted hour. The planning was flawless.</p><span>Ayesha and Umar, Islamabad</span></div></div></div>
+      <div class="postcard" style="--r:-9deg;--x:14%;--y:40%"><div class="postcard__inner"><div class="postcard__front"><img src="https://images.unsplash.com/photo-1572482520019-159781d56ae9?auto=format&fit=crop&w=600&q=60" alt="Green river valley in Kaghan" loading="lazy"></div><div class="postcard__back"><p>Kaghan in June. Rain, rainbows and the best trout I have ever eaten.</p><span>Mert, Istanbul</span></div></div></div>
+      <div class="postcard" style="--r:4deg;--x:38%;--y:46%"><div class="postcard__inner"><div class="postcard__front"><img src="https://images.unsplash.com/photo-1642267043123-bd7dbe76c6c7?auto=format&fit=crop&w=600&q=60" alt="Autumn colors at a Skardu lake" loading="lazy"></div><div class="postcard__back"><p>October in Skardu is gold. Literally. Book the autumn trip, trust me.</p><span>Nadia, Dubai</span></div></div></div>
+      <div class="postcard" style="--r:-2deg;--x:60%;--y:42%"><div class="postcard__inner"><div class="postcard__front"><img src="https://images.unsplash.com/photo-1616701639706-a89d1a609eda?auto=format&fit=crop&w=600&q=60" alt="Flame Towers in Baku by day" loading="lazy"></div><div class="postcard__back"><p>Baku for our anniversary. Rahgeer arranged a rooftop dinner we did not even ask for.</p><span>Leyla and Farid, Baku</span></div></div></div>
+    </div>
+    <div class="postcards__foot reveal">
+      <a href="https://www.instagram.com/rahgeerstories" target="_blank" rel="noopener" class="link-arrow">Follow the journey on Instagram</a>
+      <div class="gallery__cta">
+        <p>Your photo could be next on this reel.</p>
+        <a href="#planner" class="btn btn--primary" data-scroll data-magnetic><span>Plan the Trip Behind the Photo</span><i class="btn__arrow"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. CREATORS AND INTERNATIONAL -->
+<section class="orbit section" id="creators">
+  <div class="container orbit__grid">
+    <div class="orbit__text">
+      <p class="eyebrow reveal">They came from everywhere</p>
+      <h2 class="h2 split">Creators, families and travelers from 5+ countries chose Rahgeer for one reason. <em>We deliver the story they came for.</em></h2>
+      <p class="reveal">Top Pakistani and Turkish creators, families from the UK and UAE, couples from Baku, a corporate team from Islamabad. Different passports, same ending: they all came back.</p>
+      <a href="#planner" class="btn btn--primary" data-scroll data-magnetic><span>Join the Map, Tell Us Where You're From</span><i class="btn__arrow"></i></a>
+    </div>
+    <div class="orbit__stage reveal" id="orbitStage">
+      <svg class="orbit__lines" viewBox="0 0 600 600" aria-hidden="true">
+        <circle cx="300" cy="300" r="150" fill="none" stroke="rgba(143,211,232,.15)" stroke-dasharray="3 6"/>
+        <circle cx="300" cy="300" r="250" fill="none" stroke="rgba(143,211,232,.12)" stroke-dasharray="3 6"/>
+        <g class="orbit__spokes" stroke="rgba(243,156,43,.35)" stroke-width="1.2" fill="none">
+          <path d="M300 300 Q 380 140 300 50"/><path d="M300 300 Q 470 250 545 175"/><path d="M300 300 Q 460 400 520 430"/><path d="M300 300 Q 240 470 170 520"/><path d="M300 300 Q 120 360 60 300"/><path d="M300 300 Q 180 150 105 110"/>
+        </g>
+      </svg>
+      <div class="orbit__center"><img src="assets/logo-light.png" alt="Rahgeer"><span>Gilgit Baltistan</span></div>
+      <div class="orbit__country" style="--x:300;--y:50"><img class="flag" src="https://flagcdn.com/w40/tr.png" alt=""><span>Turkey</span></div>
+      <div class="orbit__country" style="--x:545;--y:175"><img class="flag" src="https://flagcdn.com/w40/gb.png" alt=""><span>UK</span></div>
+      <div class="orbit__country" style="--x:520;--y:430"><img class="flag" src="https://flagcdn.com/w40/ae.png" alt=""><span>UAE</span></div>
+      <div class="orbit__country" style="--x:170;--y:520"><img class="flag" src="https://flagcdn.com/w40/az.png" alt=""><span>Azerbaijan</span></div>
+      <div class="orbit__country" style="--x:60;--y:300"><img class="flag" src="https://flagcdn.com/w40/us.png" alt=""><span>USA</span></div>
+      <div class="orbit__country" style="--x:105;--y:110"><img class="flag" src="https://flagcdn.com/w40/pk.png" alt=""><span>Pakistan</span></div>
+      <div class="orbit__ring" id="orbitRing">
+        <div class="creator" style="--a:0deg" data-name="Sara Khan" data-handle="@wanderwithsara" data-flag="pk" data-fol="640K" data-quote="Rahgeer knew every sunrise spot before I asked."><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=160&h=160&q=70" alt="Sara Khan"></div>
+        <div class="creator" style="--a:45deg" data-name="Ali Raza" data-handle="@aliontheroad" data-flag="pk" data-fol="1.2M" data-quote="Ten trips up north. This was the smoothest."><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=160&h=160&q=70" alt="Ali Raza"></div>
+        <div class="creator" style="--a:90deg" data-name="Mert Yilmaz" data-handle="@istanbulmert" data-flag="tr" data-fol="480K" data-quote="Pakistan surprised me. Rahgeer made it feel like home."><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&h=160&q=70" alt="Mert Yilmaz"></div>
+        <div class="creator" style="--a:135deg" data-name="Aylin Demir" data-handle="@aylinexplores" data-flag="tr" data-fol="310K" data-quote="Safe, organized and beautiful. I will be back."><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=160&h=160&q=70" alt="Aylin Demir"></div>
+        <div class="creator" style="--a:180deg" data-name="Hamza Sheikh" data-handle="@hamzaupnorth" data-flag="pk" data-fol="890K" data-quote="Drone permits sorted, weather tracked, zero stress."><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=160&h=160&q=70" alt="Hamza Sheikh"></div>
+        <div class="creator" style="--a:225deg" data-name="Zoya Malik" data-handle="@zoyatravels" data-flag="pk" data-fol="225K" data-quote="As a solo female traveler I felt safe every minute."><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=160&h=160&q=70" alt="Zoya Malik"></div>
+        <div class="creator" style="--a:270deg" data-name="Emre Kaya" data-handle="@emrekaya.travel" data-flag="tr" data-fol="150K" data-quote="Skardu in October. Nothing in Europe compares."><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=160&h=160&q=70" alt="Emre Kaya"></div>
+        <div class="creator" style="--a:315deg" data-name="Maham Ahmed" data-handle="@mahamwanders" data-flag="pk" data-fol="95K" data-quote="Every hotel was exactly as promised. Rare."><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=160&h=160&q=70" alt="Maham Ahmed"></div>
+      </div>
+    </div>
+    <div class="creator-card reveal" id="creatorCard" aria-live="polite">
+      <div class="creator-card__top"><b class="creator-card__name">Hover a creator</b><span class="creator-card__flag"></span></div>
+      <span class="creator-card__handle"></span>
+      <p class="creator-card__quote"></p>
+      <span class="creator-card__fol"></span>
+    </div>
+  </div>
+</section>
+
+<!-- 10. SAFETY -->
+<section class="safety section section--light" id="safety">
+  <div class="container safety__grid">
+    <div class="safety__text">
+      <p class="eyebrow reveal">Safety and Security</p>
+      <h2 class="h2 split">Your safety <em>is</em> the itinerary.</h2>
+      <p class="reveal">International travelers, solo women, families with kids and grandparents. Every trip is built on the same foundation. We plan for the worst so you only ever see the best.</p>
+      <div class="badges reveal">
+        <span class="badge"><i>✓</i>Licensed Operator</span>
+        <span class="badge"><i>✓</i>First Aid Onboard</span>
+        <span class="badge"><i>✓</i>24/7 Support</span>
+        <span class="badge"><i>✓</i>Insurance Assistance</span>
+      </div>
+      <div class="safety__cta reveal">
+        <p>Have a specific concern? Ask our team directly, we answer within minutes.</p>
+        <div class="btn-row">
+          <a href="https://wa.me/923367244337?text=Hi%20Rahgeer%2C%20I%20have%20a%20question%20about%20safety" target="_blank" rel="noopener" class="btn btn--dark btn--sm"><span>Ask on WhatsApp</span></a>
+          <a href="#planner" class="btn btn--outline btn--sm" data-scroll><span>Send a Question</span></a>
+        </div>
+      </div>
+    </div>
+    <ul class="checklist reveal" id="checklist">
+      <li class="check is-open"><button class="check__head"><span class="check__box"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Vetted and experienced mountain drivers</span></button><div class="check__body"><p>Every driver has a minimum of 8 years on the Karakoram Highway and mountain roads. No night driving on risky stretches, ever.</p></div></li>
+      <li class="check"><button class="check__head"><span class="check__box"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Guides trained in first aid and altitude awareness</span></button><div class="check__body"><p>Our guides carry oxygen on high altitude days, watch for altitude symptoms and know the nearest clinic on every route.</p></div></li>
+      <li class="check"><button class="check__head"><span class="check__box"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Live weather and road monitoring before every move</span></button><div class="check__body"><p>We check road status with local contacts each morning. If a road is unsafe, we change the plan. The mountain will still be there tomorrow.</p></div></li>
+      <li class="check"><button class="check__head"><span class="check__box"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Verified hotels checked by our own team</span></button><div class="check__body"><p>Clean rooms, reliable hot water, secure premises, family friendly staff. We revisit every property each season.</p></div></li>
+      <li class="check"><button class="check__head"><span class="check__box"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>24/7 WhatsApp trip manager</span></button><div class="check__body"><p>One number. One person. Available at 2am if you need them. Most questions get answered in under 5 minutes.</p></div></li>
+      <li class="check"><button class="check__head"><span class="check__box"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Women only and family only departures available</span></button><div class="check__body"><p>Dedicated departures with female trip leads and vetted family groups. Ask us for the next available dates.</p></div></li>
+      <li class="check"><button class="check__head"><span class="check__box"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Registered and licensed tour operator</span></button><div class="check__body"><p>DTS License No. PTDC/TO/GB/2021/1147. Fully registered, fully accountable, fully insured for our vehicles and operations.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 11. TESTIMONIALS -->
+<section class="testi section" id="testimonials">
+  <div class="container">
+    <p class="eyebrow reveal">In Their Words</p>
+    <h2 class="h2 split">Two hundred travelers. <em>Zero regrets.</em></h2>
+  </div>
+  <div class="container testi__stack" id="testiStack">
+    <article class="tcard">
+      <span class="tcard__q">“</span>
+      <p>We took our parents, both above 65, to Hunza and Skardu. Rahgeer planned shorter drive days, booked ground floor rooms and had a doctor on call. My mother cried at Attabad. Happy tears.</p>
+      <footer><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=80&h=80&q=60" alt=""><div><b>Sana Farooq</b><span>Karachi, Pakistan. Hunza and Skardu, 8 Days</span></div><span class="stars">★★★★★</span><i class="verified">Verified traveler</i></footer>
+    </article>
+    <article class="tcard tcard--chat">
+      <div class="bubble bubble--in">Bhai honestly best decision of 2026. Fairy Meadows trip 10/10. Guide Nasir was a legend 🙌</div>
+      <div class="bubble bubble--in">Already telling everyone at office. Booking Skardu for December inshallah</div>
+      <div class="bubble bubble--out">This made our day Ahmed! December dates are open, sending you the plan now 🏔️</div>
+      <footer><div><b>Ahmed Siddiqui</b><span>Lahore, Pakistan. Fairy Meadows, 4 Days</span></div><span class="stars">★★★★★</span><i class="verified">WhatsApp review</i></footer>
+    </article>
+    <article class="tcard">
+      <span class="tcard__q">“</span>
+      <p>Solo female traveler from the UK. I had every worry you can imagine. The Rahgeer team answered each one before I asked. Female trip lead, private room, driver who felt like an older brother. Pakistan is now my favorite country.</p>
+      <footer><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=80&h=80&q=60" alt=""><div><b>Emily Carter</b><span>Manchester, UK. Hunza, 6 Days</span></div><span class="stars">★★★★★</span><i class="verified">Verified traveler</i></footer>
+    </article>
+    <article class="tcard tcard--video">
+      <img src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=1000&q=60" alt="Cappadocia balloons" class="tcard__bg">
+      <a href="https://www.instagram.com/rahgeerstories" target="_blank" rel="noopener" class="tcard__play" data-cursor="Play"><i></i></a>
+      <footer><div><b>Mert Yilmaz</b><span>Istanbul, Turkey. Creator trip to Skardu. Watch his reel</span></div><span class="stars">★★★★★</span></footer>
+    </article>
+    <article class="tcard">
+      <span class="tcard__q">“</span>
+      <p>Took 42 people from our company to Naran and Swat. One coordinator handled headcounts, meals, rooms, invoices, everything. I did not answer a single logistics question the whole trip. That is worth every rupee.</p>
+      <footer><img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=80&h=80&q=60" alt=""><div><b>Usman Tariq</b><span>Islamabad, Pakistan. Corporate retreat, 4 Days</span></div><span class="stars">★★★★★</span><i class="verified">Verified traveler</i></footer>
+    </article>
+    <article class="tcard">
+      <span class="tcard__q">“</span>
+      <p>We flew from Baku for our honeymoon and chose Hunza on a friend's advice. Rahgeer arranged a private car, a room with the Rakaposhi view and a candle dinner we never requested. We are already planning Skardu.</p>
+      <footer><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=80&h=80&q=60" alt=""><div><b>Leyla and Farid Aliyev</b><span>Baku, Azerbaijan. Honeymoon, 7 Days</span></div><span class="stars">★★★★★</span><i class="verified">Verified traveler</i></footer>
+    </article>
+  </div>
+  <div class="container testi__foot reveal">
+    <p>Ready to write your own review? It starts with a trip.</p>
+    <a href="#planner" class="btn btn--primary" data-scroll data-magnetic><span>Plan My Trip</span><i class="btn__arrow"></i></a>
+  </div>
+</section>
+
+<!-- 12. STORY -->
+<section class="story section" id="story">
+  <div class="container story__grid">
+    <div class="story__media reveal-img">
+      <img src="https://images.unsplash.com/photo-1633100291356-19e4e0dcb98f?auto=format&fit=crop&w=1200&q=75" alt="Pakistan flag against the mountains of Gilgit Baltistan">
+    </div>
+    <div class="story__text">
+      <p class="eyebrow reveal">Why we walk this road</p>
+      <h2 class="h2 split">We were born <em>between these mountains.</em></h2>
+      <p class="reveal">Rahgeer started with three friends from Gilgit, one jeep and a habit of taking visitors to the places the guidebooks missed. The visitors kept coming back. They brought friends. The friends brought families.</p>
+      <p class="reveal">Today we have guided more than two hundred travelers from five countries across Gilgit Baltistan, Kaghan, Swat and now Turkey, Baku, Dubai and Thailand. The jeep count went up. The rule did not change: every trip is personal.</p>
+      <p class="reveal">We know which chai stop has the best view of Rakaposhi. We know which road closes after 4pm in September. We know the family in Khaplu who will cook for you like you are their own. That knowledge is the trip.</p>
+      <p class="story__sig reveal">We are not a booking desk. <em>We are the people who walk with you.</em></p>
+      <a href="#planner" class="btn btn--primary" data-scroll data-magnetic><span>Come Meet Us on the Road</span><i class="btn__arrow"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- 13. TRIP PLANNER -->
+<section class="planner section" id="planner">
+  <div class="planner__bg"><img src="https://images.unsplash.com/photo-1602147557719-1d65f9e58a24?auto=format&fit=crop&w=1800&q=60" alt=""></div>
+  <div class="container planner__inner">
+    <div class="planner__intro">
+      <p class="eyebrow reveal">Tell us your dream trip</p>
+      <h2 class="h2 split">Two minutes now. <em>A lifetime of stories</em> later.</h2>
+      <p class="reveal">Answer five quick questions. A real trip planner reads every word and sends you a custom plan on WhatsApp within 24 hours.</p>
+      <ul class="planner__trust reveal">
+        <li>No spam</li><li>No payment now</li><li>Just a real plan from real people</li>
+      </ul>
+    </div>
+    <form class="form glass" id="tripForm" novalidate>
+      <div class="form__progress" aria-hidden="true">
+        <svg viewBox="0 0 400 24" preserveAspectRatio="none"><path d="M12 12 H388" stroke="rgba(255,255,255,.15)" stroke-width="2"/><path id="formPath" d="M12 12 H388" pathLength="1" stroke="#F39C2B" stroke-width="2"/></svg>
+        <div class="form__markers"><span class="is-active"></span><span></span><span></span><span></span><span></span></div>
+      </div>
+      <div class="form__steps">
+        <fieldset class="form__step is-active" data-step="0">
+          <legend>Where do you want to go?</legend>
+          <div class="chips" data-name="destination" data-multi="true">
+            <button type="button" class="pchip" data-val="Hunza">Hunza</button>
+            <button type="button" class="pchip" data-val="Skardu">Skardu</button>
+            <button type="button" class="pchip" data-val="Hunza and Skardu">Hunza and Skardu</button>
+            <button type="button" class="pchip" data-val="Deosai">Deosai</button>
+            <button type="button" class="pchip" data-val="Fairy Meadows">Fairy Meadows</button>
+            <button type="button" class="pchip" data-val="Naran Kaghan">Naran Kaghan</button>
+            <button type="button" class="pchip" data-val="Swat and Kumrat">Swat and Kumrat</button>
+            <button type="button" class="pchip" data-val="Turkey">Turkey</button>
+            <button type="button" class="pchip" data-val="Baku">Baku</button>
+            <button type="button" class="pchip" data-val="Dubai">Dubai</button>
+            <button type="button" class="pchip" data-val="Thailand">Thailand</button>
+            <button type="button" class="pchip pchip--alt" data-val="Surprise me">Not sure yet, surprise me</button>
+          </div>
+          <p class="form__err">Pick at least one destination so we know where to start.</p>
+        </fieldset>
+        <fieldset class="form__step" data-step="1">
+          <legend>Who's coming?</legend>
+          <div class="chips" data-name="who">
+            <button type="button" class="pchip" data-val="Solo">Solo</button>
+            <button type="button" class="pchip" data-val="Couple">Couple</button>
+            <button type="button" class="pchip" data-val="Family">Family</button>
+            <button type="button" class="pchip" data-val="Friends Group">Friends Group</button>
+            <button type="button" class="pchip" data-val="Creator Trip">Creator Trip</button>
+            <button type="button" class="pchip" data-val="Corporate">Corporate or Student</button>
+          </div>
+          <label class="stepper"><span>Number of travelers</span><div><button type="button" data-step-btn="-1">−</button><input type="number" name="travelers" min="1" max="100" value="2"><button type="button" data-step-btn="1">+</button></div></label>
+          <p class="form__err">Tell us who is coming so we can plan the right rooms.</p>
+        </fieldset>
+        <fieldset class="form__step" data-step="2">
+          <legend>When and how long?</legend>
+          <label class="field"><span>Preferred month</span><select name="month"><option value="">Choose a month</option><option>October 2026</option><option>November 2026</option><option>December 2026</option><option>January 2027</option><option>February 2027</option><option>March 2027</option><option>April 2027</option><option>May 2027</option><option>June 2027</option><option>July 2027</option><option>August 2027</option><option>September 2027</option><option>Flexible</option></select></label>
+          <div class="chips" data-name="duration">
+            <button type="button" class="pchip" data-val="3 days">3 days</button>
+            <button type="button" class="pchip" data-val="5 days">5 days</button>
+            <button type="button" class="pchip" data-val="7 days">7 days</button>
+            <button type="button" class="pchip" data-val="10+ days">10+ days</button>
+          </div>
+          <p class="form__err">Choose a month and a rough duration.</p>
+        </fieldset>
+        <fieldset class="form__step" data-step="3">
+          <legend>What's your vibe?</legend>
+          <div class="chips" data-name="vibe" data-multi="true">
+            <button type="button" class="pchip" data-val="Relaxed and scenic">Relaxed and scenic</button>
+            <button type="button" class="pchip" data-val="Adventure and hiking">Adventure and hiking</button>
+            <button type="button" class="pchip" data-val="Photography focused">Photography focused</button>
+            <button type="button" class="pchip" data-val="Luxury stays">Luxury stays</button>
+            <button type="button" class="pchip" data-val="Budget friendly">Budget friendly</button>
+          </div>
+          <p class="form__err">Pick at least one vibe.</p>
+        </fieldset>
+        <fieldset class="form__step" data-step="4">
+          <legend>How do we reach you?</legend>
+          <div class="field-grid">
+            <label class="field"><span>Your name</span><input type="text" name="name" placeholder="Full name" required></label>
+            <label class="field"><span>WhatsApp number</span><input type="tel" name="phone" placeholder="+92 3XX XXXXXXX" required></label>
+            <label class="field field--full"><span>Email (optional)</span><input type="email" name="email" placeholder="you@example.com"></label>
+            <label class="field field--full"><span>Anything else we should know?</span><textarea name="notes" rows="3" placeholder="Special occasion, dietary needs, must see places..."></textarea></label>
+          </div>
+          <p class="form__err">We need your name and WhatsApp number to send the plan.</p>
+        </fieldset>
+      </div>
+      <div class="form__nav">
+        <button type="button" class="btn btn--ghost btn--sm" id="formPrev" disabled><span>Back</span></button>
+        <span class="form__count"><b id="stepNow">1</b> / 5</span>
+        <button type="button" class="btn btn--primary btn--sm" id="formNext" data-magnetic><span>Continue</span><i class="btn__arrow"></i></button>
+      </div>
+      <div class="form__success" id="formSuccess">
+        <svg viewBox="0 0 120 120" class="success__svg"><circle cx="60" cy="60" r="54" fill="none" stroke="rgba(243,156,43,.3)" stroke-width="2"/><path class="success__flag" d="M60 92 V38 M60 38 h26 l-8 9 8 9 H60" fill="none" stroke="#F39C2B" stroke-width="3" stroke-linejoin="round"/></svg>
+        <h3>Your plan is on its way.</h3>
+        <p>Expect a WhatsApp from our team within 24 hours. Usually much sooner.</p>
+        <a href="#" id="successWa" target="_blank" rel="noopener" class="btn btn--primary"><span>Or chat with us right now</span><i class="btn__arrow"></i></a>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- 14. FAQ -->
+<section class="faq section" id="faq">
+  <div class="container">
+    <p class="eyebrow reveal">Questions travelers ask before they say yes</p>
+    <h2 class="h2 split">Everything you're wondering. <em>Answered.</em></h2>
+    <div class="faq__grid">
+      <div class="faq__item reveal"><button class="faq__q"><span class="faq__n">01</span><span>Is it safe for solo female travelers?</span><i></i></button><div class="faq__a"><p>Yes. We run women only departures with female trip leads, book private rooms in verified hotels and pair you with drivers who have traveled with hundreds of women before you. Your trip manager is one WhatsApp message away at all hours.</p></div></div>
+      <div class="faq__item reveal"><button class="faq__q"><span class="faq__n">02</span><span>What is included in the price?</span><i></i></button><div class="faq__a"><p>Transport, hotels, breakfast and dinner, jeep rides, permits, guide and trip manager. Lunches, personal shopping and optional activities are listed separately so you always know exactly what you are paying for.</p></div></div>
+      <div class="faq__item reveal"><button class="faq__q"><span class="faq__n">03</span><span>How do I pay and is there a deposit?</span><i></i></button><div class="faq__a"><p>A 30 percent deposit reserves your seat. The balance is due 7 days before departure. Pay via bank transfer, JazzCash, EasyPaisa or card. International travelers can pay by card link.</p></div></div>
+      <div class="faq__item reveal"><button class="faq__q"><span class="faq__n">04</span><span>Can international travelers join group tours?</span><i></i></button><div class="faq__a"><p>Absolutely. Travelers from Turkey, the UK, UAE, Azerbaijan and the USA have joined our groups. We help with airport pickup, SIM cards, currency and the paperwork below.</p></div></div>
+      <div class="faq__item reveal"><button class="faq__q"><span class="faq__n">05</span><span>Do you help with visas or NOCs for restricted areas?</span><i></i></button><div class="faq__a"><p>We guide you through the Pakistan visa process, provide invitation letters and handle NOC applications for areas that require them. Most of Hunza and Skardu need no NOC at all.</p></div></div>
+      <div class="faq__item reveal"><button class="faq__q"><span class="faq__n">06</span><span>What if weather cancels a day?</span><i></i></button><div class="faq__a"><p>We reroute to an equally beautiful alternative at no cost. If Rahgeer has to cancel an entire trip for weather or road closure, you get a full refund or a free date change. Your call.</p></div></div>
+      <div class="faq__item reveal"><button class="faq__q"><span class="faq__n">07</span><span>Can I customize a group tour?</span><i></i></button><div class="faq__a"><p>Yes. Add days, upgrade hotels, swap activities or extend to another destination. Free date changes up to 14 days before departure.</p></div></div>
+      <div class="faq__item reveal"><button class="faq__q"><span class="faq__n">08</span><span>How fast will I hear back?</span><i></i></button><div class="faq__a"><p>WhatsApp messages get a reply in minutes during the day. Form submissions get a full custom plan within 24 hours, usually the same evening.</p></div></div>
+    </div>
+    <div class="faq__foot reveal">
+      <p>Still have a question? Ask us, we reply fast.</p>
+      <div class="btn-row">
+        <a href="https://wa.me/923367244337?text=Hi%20Rahgeer%2C%20quick%20question" target="_blank" rel="noopener" class="btn btn--primary btn--sm"><span>WhatsApp Us</span></a>
+        <a href="#planner" class="btn btn--ghost btn--sm" data-scroll><span>Send a Question</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 15. FINAL CTA -->
+<section class="final" id="final">
+  <div class="final__media"><img src="https://images.unsplash.com/photo-1691077015817-64ee69ec020c?auto=format&fit=crop&w=2000&q=75" alt="Nanga Parbat under the stars"></div>
+  <div class="final__glow" aria-hidden="true"></div>
+  <div class="container final__inner">
+    <p class="eyebrow reveal">Your story is waiting</p>
+    <h2 class="final__title split">Ten years from now you will remember this trip, <em>not the reasons you waited.</em></h2>
+    <p class="reveal">Tell us where you want to go. We'll take care of everything else.</p>
+    <div class="btn-row reveal">
+      <a href="#planner" class="btn btn--primary btn--lg" data-scroll data-magnetic><span>Plan My Trip, It's Free</span><i class="btn__arrow"></i></a>
+      <a href="https://wa.me/923367244337?text=Hi%20Rahgeer%2C%20I%20want%20to%20plan%20a%20trip" target="_blank" rel="noopener" class="btn btn--ghost btn--lg"><span>Talk to Us on WhatsApp</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- 16. FOOTER -->
+<footer class="footer" id="footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <img src="assets/logo-light.png" alt="Rahgeer Stories">
+      <p>Walk the road. Live the story.</p>
+      <div class="footer__social">
+        <a href="https://www.instagram.com/rahgeerstories" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        <a href="https://www.facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.5 1.6-1.5h1.7V4.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4.1 1.5-4.1 4.2v2.3H7.6V14h2.7v8h3.2z"/></svg></a>
+        <a href="https://www.tiktok.com" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.3 2.3 1.6 3.7 3.9 3.9v3.2c-1.4 0-2.7-.4-3.9-1.2v6.6c0 3.5-2.8 6.3-6.3 6.3S3.9 19 3.9 15.5s2.8-6.3 6.3-6.3c.3 0 .6 0 .9.1v3.3c-.3-.1-.6-.2-.9-.2-1.7 0-3.1 1.4-3.1 3.1s1.4 3.1 3.1 3.1 3.1-1.4 3.1-3.1V3h3.2z"/></svg></a>
+        <a href="https://wa.me/923367244337" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m.01 1.67c4.54 0 8.23 3.7 8.23 8.24 0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c.01-4.55 3.7-8.25 8.25-8.25M8.53 7.33c-.16 0-.43.06-.66.31-.22.25-.87.86-.87 2.07 0 1.22.89 2.39 1 2.56.14.17 1.76 2.67 4.25 3.73.59.27 1.05.42 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.27-.25-.14-1.47-.74-1.69-.82-.23-.08-.37-.12-.56.12-.16.25-.64.81-.78.97-.15.17-.29.19-.53.07-.26-.13-1.06-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.12-.24-.01-.39.11-.5.11-.11.27-.29.37-.44.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.11-.56-1.35-.77-1.84-.2-.48-.4-.42-.56-.43-.14 0-.3-.01-.47-.01"/></svg></a>
+      </div>
+    </div>
+    <div class="footer__col">
+      <h4>Explore</h4>
+      <a href="#destinations" data-scroll>Destinations</a><a href="#trips" data-scroll>Trip Styles</a><a href="#departures" data-scroll>Departures</a><a href="#gallery" data-scroll>Gallery</a><a href="#story" data-scroll>About Rahgeer</a><a href="#faq" data-scroll>FAQ</a>
+    </div>
+    <div class="footer__col">
+      <h4>Destinations</h4>
+      <a href="#planner" data-scroll data-preset-dest="Hunza">Hunza</a><a href="#planner" data-scroll data-preset-dest="Skardu">Skardu</a><a href="#planner" data-scroll data-preset-dest="Deosai">Deosai</a><a href="#planner" data-scroll data-preset-dest="Fairy Meadows">Fairy Meadows</a><a href="#planner" data-scroll data-preset-dest="Naran Kaghan">Naran Kaghan</a><a href="#planner" data-scroll data-preset-dest="Turkey">Turkey</a><a href="#planner" data-scroll data-preset-dest="Baku">Baku</a><a href="#planner" data-scroll data-preset-dest="Dubai">Dubai</a><a href="#planner" data-scroll data-preset-dest="Thailand">Thailand</a>
+    </div>
+    <div class="footer__col">
+      <h4>Contact</h4>
+      <a href="https://wa.me/923367244337" target="_blank" rel="noopener">WhatsApp 0336 7244337</a>
+      <a href="mailto:hello@rahgeerstories.com">hello@rahgeerstories.com</a>
+      <span>Gilgit Baltistan, Pakistan</span>
+      <span class="footer__lic">DTS License No. PTDC/TO/GB/2021/1147</span>
+      <form class="footer__alert" id="alertForm">
+        <label for="alertPhone">Get departure alerts</label>
+        <div><input type="tel" id="alertPhone" placeholder="WhatsApp number" required><button type="submit" class="btn btn--primary btn--xs"><span>Alert Me</span></button></div>
+      </form>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <span>© <span id="year"></span> Rahgeer Stories. All rights reserved.</span>
+    <a href="#top" data-scroll>Back to top ↑</a>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/923367244337?text=Hi%20Rahgeer%2C%20I%20want%20to%20plan%20a%20trip" target="_blank" rel="noopener" class="wa-float" id="waFloat" aria-label="Chat on WhatsApp">
+  <span class="wa-float__tip" id="waTip">Plan your trip in 2 minutes <b id="waTipClose" role="button" aria-label="Dismiss">×</b></span>
+  <span class="wa-float__btn">
+    <span class="wa-float__ring"></span>
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m.01 1.67c4.54 0 8.23 3.7 8.23 8.24 0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c.01-4.55 3.7-8.25 8.25-8.25M8.53 7.33c-.16 0-.43.06-.66.31-.22.25-.87.86-.87 2.07 0 1.22.89 2.39 1 2.56.14.17 1.76 2.67 4.25 3.73.59.27 1.05.42 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.27-.25-.14-1.47-.74-1.69-.82-.23-.08-.37-.12-.56.12-.16.25-.64.81-.78.97-.15.17-.29.19-.53.07-.26-.13-1.06-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.12-.24-.01-.39.11-.5.11-.11.27-.29.37-.44.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.11-.56-1.35-.77-1.84-.2-.48-.4-.42-.56-.43-.14 0-.3-.01-.47-.01"/></svg>
+    <i class="wa-float__dot"></i>
+  </span>
+</a>
+
+<!-- Mobile sticky bar -->
+<div class="mobile-bar" id="mobileBar">
+  <a href="#planner" class="btn btn--primary btn--sm" data-scroll><span>Plan My Trip</span></a>
+  <a href="https://wa.me/923367244337?text=Hi%20Rahgeer%2C%20I%20want%20to%20plan%20a%20trip" target="_blank" rel="noopener" class="btn btn--ghost btn--sm"><span>WhatsApp</span></a>
+</div>
+
+<!-- Soft popup -->
+<div class="popup" id="popup" aria-hidden="true">
+  <div class="popup__card glass">
+    <button class="popup__close" id="popupClose" aria-label="Close">×</button>
+    <p class="eyebrow">Not ready yet?</p>
+    <h3>Get our free Gilgit Baltistan trip planning checklist</h3>
+    <p>Packing list, best months, road tips and the 5 spots most tourists miss. Straight to your WhatsApp.</p>
+    <form id="popupForm"><input type="tel" placeholder="Your WhatsApp number" required><button type="submit" class="btn btn--primary btn--sm"><span>Send It to Me</span></button></form>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox__close" id="lbClose" aria-label="Close">×</button>
+  <button class="lightbox__nav lightbox__nav--prev" id="lbPrev" aria-label="Previous">‹</button>
+  <button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Next">›</button>
+  <figure class="lightbox__fig"><img id="lbImg" src="" alt=""><figcaption><b id="lbCap"></b><span id="lbBy"></span></figcaption></figure>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
