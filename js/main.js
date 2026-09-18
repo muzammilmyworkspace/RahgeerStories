@@ -280,6 +280,52 @@
     }
   })();
 
+  /* ---------- Hero atmosphere: drifting fog + floating light particles ---------- */
+  (function heroFx() {
+    const canvas = $('#heroFx'); if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let w, h, dpr, raf, t = 0;
+    const fogs = [], dust = [];
+    const rand = (a, b) => a + Math.random() * (b - a);
+    const resize = () => {
+      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      const r = canvas.getBoundingClientRect();
+      w = canvas.width = Math.max(1, r.width * dpr); h = canvas.height = Math.max(1, r.height * dpr);
+      fogs.length = 0; dust.length = 0;
+      const nf = window.innerWidth < 768 ? 5 : 8;
+      for (let i = 0; i < nf; i++) fogs.push({ x: rand(-.2, 1.2), y: rand(.35, 1.05), rx: rand(.35, .7), ry: rand(.12, .26), v: rand(.00025, .0007) * (Math.random() < .5 ? 1 : -1), a: rand(.05, .11), ph: rand(0, 6.28) });
+      const nd = window.innerWidth < 768 ? 22 : 48;
+      for (let i = 0; i < nd; i++) dust.push({ x: Math.random(), y: Math.random(), s: rand(.8, 2.4), v: rand(.00035, .0011), sw: rand(.2, .6), a: rand(.25, .7), ph: rand(0, 6.28) });
+    };
+    const draw = () => {
+      if (!REDUCED) t += 1;
+      ctx.clearRect(0, 0, w, h);
+      /* fog banks */
+      fogs.forEach((f) => {
+        if (!REDUCED) { f.x += f.v; if (f.x > 1.35) f.x = -.35; if (f.x < -.35) f.x = 1.35; }
+        const cx = f.x * w, cy = (f.y + Math.sin(t * .004 + f.ph) * .02) * h;
+        const rx = f.rx * w, ry = f.ry * h;
+        ctx.save(); ctx.translate(cx, cy); ctx.scale(1, ry / rx);
+        const g = ctx.createRadialGradient(0, 0, 0, 0, 0, rx);
+        g.addColorStop(0, `rgba(214,232,238,${f.a})`); g.addColorStop(.55, `rgba(214,232,238,${f.a * .45})`); g.addColorStop(1, 'rgba(214,232,238,0)');
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0, 0, rx, 0, 6.283); ctx.fill(); ctx.restore();
+      });
+      /* floating dust in the light */
+      dust.forEach((d) => {
+        if (!REDUCED) { d.y -= d.v; d.x += Math.sin(t * .01 + d.ph) * .00035 * d.sw; if (d.y < -.02) { d.y = 1.02; d.x = Math.random(); } }
+        const a = d.a * (0.6 + 0.4 * Math.sin(t * .03 + d.ph));
+        ctx.beginPath(); ctx.fillStyle = `rgba(255,236,200,${a})`; ctx.shadowColor = 'rgba(255,220,160,.9)'; ctx.shadowBlur = 6 * dpr;
+        ctx.arc(d.x * w, d.y * h, d.s * dpr, 0, 6.283); ctx.fill();
+      });
+      ctx.shadowBlur = 0;
+      if (!REDUCED) raf = requestAnimationFrame(draw);
+    };
+    resize(); window.addEventListener('resize', resize); draw();
+    document.addEventListener('visibilitychange', () => { if (REDUCED) return; document.hidden ? cancelAnimationFrame(raf) : draw(); });
+    /* Pause when the hero is off screen */
+    ScrollTrigger.create({ trigger: '#hero', start: 'top bottom', end: 'bottom top', onToggle: (s) => { if (REDUCED) return; if (s.isActive) { cancelAnimationFrame(raf); draw(); } else cancelAnimationFrame(raf); } });
+  })();
+
   /* ---------- Counters ---------- */
   function animateCounters(scope = document) {
     $$('.count', scope).forEach((el) => {
