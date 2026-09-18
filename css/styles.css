@@ -523,9 +523,9 @@ body.no-cursor .cursor{display:block}
 .form__markers span{width:12px;height:12px;border-radius:50%;background:var(--slate-800);border:2px solid rgba(255,255,255,.25);margin-top:6px;transition:all .3s}
 .form__markers span.is-active{background:var(--orange);border-color:var(--orange);box-shadow:0 0 0 5px rgba(243,156,43,.2)}
 .form__markers span.is-done{background:var(--orange);border-color:var(--orange)}
-.form__steps{position:relative;display:grid;min-height:300px}
-.form__step{grid-area:1/1;border:0;opacity:0;transform:translateX(30px);pointer-events:none;transition:opacity .45s,transform .55s var(--ease)}
-.form__step.is-active{opacity:1;transform:none;pointer-events:auto}
+.form__steps{position:relative;display:grid;min-height:200px;overflow:hidden}
+.form__step{grid-area:1/1;border:0;opacity:0;transform:translateX(30px);pointer-events:none;transition:opacity .45s,transform .55s var(--ease);height:0;min-height:0;overflow:hidden;visibility:hidden}
+.form__step.is-active{opacity:1;transform:none;pointer-events:auto;height:auto;overflow:visible;visibility:visible}
 .form__step.is-prev{transform:translateX(-30px)}
 .form__step legend{font-family:var(--font-display);font-size:clamp(1.4rem,2.4vw,1.9rem);font-weight:700;letter-spacing:-.02em;margin-bottom:18px;float:left;width:100%}
 .chips{display:flex;flex-wrap:wrap;gap:8px;clear:both}

@@ -506,8 +506,15 @@
   let step = 0;
   const steps = $$('.form__step', form), markers = $$('.form__markers span', form), pathEl = $('#formPath');
   const prevBtn = $('#formPrev'), nextBtn = $('#formNext');
+  const stepsWrap = $('.form__steps', form);
   const goStep = (n) => {
+    const from = stepsWrap.offsetHeight;
     steps.forEach((s, i) => { s.classList.toggle('is-active', i === n); s.classList.toggle('is-prev', i < n); s.classList.remove('has-error'); });
+    if (!REDUCED && from) {
+      stepsWrap.style.height = 'auto';
+      const to = stepsWrap.offsetHeight;
+      gsap.fromTo(stepsWrap, { height: from }, { height: to, duration: .5, ease: 'expo.out', onComplete: () => { stepsWrap.style.height = ''; ScrollTrigger.refresh(); } });
+    }
     markers.forEach((m, i) => { m.classList.toggle('is-active', i === n); m.classList.toggle('is-done', i < n); });
     gsap.to(pathEl, { strokeDashoffset: 1 - n / (steps.length - 1), duration: .6, ease: 'expo.out' });
     $('#stepNow').textContent = n + 1;
